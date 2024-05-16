@@ -1,0 +1,30 @@
+<!DOCTYPE html> <!-- Specifies the document to be HTML5 -->
+<html>
+<head>
+    <title>Videos</title> <!-- Sets the title of the web page that appears on the tab in the browser -->
+</head>
+<body>
+    <h1>Uploaded Videos</h1> <!-- Main heading for the web page -->
+
+    <!-- A loop to iterate over each video in the video_files list passed from the Flask app -->
+    {% for video in video_files %} 
+
+        <!-- The 'video' HTML5 tag is used to embed video files that can be played directly in modern browsers -->
+        <video width="320" height="240" controls> <!-- Set video player size to 320x240 and show controls like play, pause, etc. -->
+            
+            <!-- The 'source' tag inside the 'video' tag specifies the video file to play -->
+            <!-- url_for constructs the URL to the video file inside the static/uploads directory -->
+            <source src="{{ url_for('static', filename='uploads/' + video) }}" type="video/mp4">
+            
+            <!-- This text will display if the user's browser doesn't support the video tag -->
+            Your browser does not support the video tag.
+        </video>
+        <br> <!-- Line break for better spacing between videos -->
+
+    {% endfor %} <!-- End of the loop for iterating over video files -->
+
+</body>
+</html>
+
+
+
